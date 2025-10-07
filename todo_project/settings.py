@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-ottb7e3o-8$0nl3a%=gj__x+ji(ye5%dba5l97r9x5o)5lqv_(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['oo-pp-jehuuuuu3768-ea95o5xz.apn.leapcell.dev', 'https://todo-app.apn.leapcell.app/', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['oo-pp-jehuuuuu3768-ea95o5xz.apn.leapcell.dev', 'todo-app.apn.leapcell.app', '127.0.0.1', 'localhost']
 
 
 
