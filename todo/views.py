@@ -1,13 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
-
+from django.http import HttpResponse
 # Create your views here.
+def get_or_create_session_key(request):
+    if not request.session.session_key:
+        request.session.create()
+    return request.session.session_key
 
 def addTask(request):
-    task = request.POST['task']
-    Task.objects.create(task=task)
-    
-    return redirect('home')
+    session_key = get_or_create_session_key(request)
+    if session_key:
+        task = request.POST['task']
+        if not task:
+            return HttpResponse("Missing task name")
+       
+        Task.objects.create(session_key = session_key, task=task)
+        return redirect('home')
+    return HttpResponse("Error creating session")
 
 def mark_as_done(request, pk):
     task = get_object_or_404(Task, pk=pk)
