@@ -10,6 +10,6 @@ def home(request):
     session_key = get_or_create_session_key(request)
     if session_key:
         tasks = Task.objects.filter(session_key = session_key, is_completed=False).order_by('-updated')
-        completed_task = Task.objects.filter(is_completed=True)
+        completed_task = Task.objects.filter(session_key = session_key, is_completed=True)
         return render(request, 'home.html', {'tasks': tasks, 'completed_task': completed_task})
     return HttpResponse("Error creating session")
